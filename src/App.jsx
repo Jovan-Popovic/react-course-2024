@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card } from "./components/card";
+import { Pagination } from "./components/pagination";
 // import { characters } from "./data/characters";
 
 function App() {
@@ -35,41 +36,13 @@ function App() {
         Rick and Morty characters
       </h1>
 
-      <div className="flex flex-wrap items-center gap-4">
-        <button
-          className="bg-green-500 text-white p-2 rounded disabled:bg-gray-400 disabled:cursor-not-allowed"
-          onClick={() => {
-            setLoading(true);
-            setPage(page - 1);
-          }}
-          disabled={page === 1 || loading}
-        >
-          Previous
-        </button>
-        {Array.from({ length: info?.pages }).map((_, pageIndex) => (
-          <button
-            key={pageIndex}
-            className="bg-green-500 text-white p-2 rounded disabled:bg-gray-400 disabled:cursor-not-allowed"
-            onClick={() => {
-              setLoading(true);
-              setPage(pageIndex + 1);
-            }}
-            disabled={loading || page === pageIndex + 1}
-          >
-            {pageIndex + 1}
-          </button>
-        ))}
-        <button
-          className="bg-green-500 text-white p-2 rounded disabled:bg-gray-400 disabled:cursor-not-allowed"
-          onClick={() => {
-            setLoading(true);
-            setPage(page + 1);
-          }}
-          disabled={info?.pages === page || loading}
-        >
-          Next
-        </button>
-      </div>
+      <Pagination
+        disabled={loading}
+        page={page}
+        setPage={setPage}
+        pageCount={info?.pages}
+        setLoading={setLoading}
+      />
       {loading ? (
         <p>Loading...</p>
       ) : (
