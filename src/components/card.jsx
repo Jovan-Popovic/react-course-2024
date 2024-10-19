@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Card = ({ articleClassName, data }) => {
   const { id, name, status, image, url } = data;
 
@@ -14,9 +16,9 @@ export const Card = ({ articleClassName, data }) => {
       <p>
         Status: <span className="font-bold">{status}</span>
       </p>
-      <a className="text-green-500" href={url}>
+      <Link className="text-green-500" to={`/characters/${id}`}>
         Read more..
-      </a>
+      </Link>
     </article>
   );
 };
