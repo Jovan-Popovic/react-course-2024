@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "../../components/card";
 import { Pagination } from "../../components/pagination";
+import { getAllCharacters } from "../../services/characters";
 // import { characters } from "./data/characters";
 
 export const Home = () => {
@@ -12,10 +13,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        const response = await fetch(
-          `https://rickandmortyapi.com/api/character?page=${page}`
-        );
-        const data = await response.json();
+        const data = await getAllCharacters({ page });
 
         if (data.error) throw Error();
 
