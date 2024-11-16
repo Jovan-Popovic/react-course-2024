@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const rickAndMortyApi = axios.create({
-  baseURL: import.meta.env.RICK_AND_MORTY_BASE_URL,
+  baseURL: import.meta.env.VITE_RICK_AND_MORTY_BASE_URL,
   timeout: 3000,
   headers: { "Content-Type": "application/json" },
 });
